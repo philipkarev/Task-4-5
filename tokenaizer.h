@@ -8,15 +8,21 @@ using namespace std;
 #include <string>
 #include <fstream>
 #include <list>
+#include <vector>
 
-class tokenaizer{
+class tokenaizer {
     char* s; // исходная строка
     int len_s; // длина исходной строки (для перегрузки <<)
+
     list <int> len; // список, хранящий номера и длины токенов
-    char* del; // набор разделителей
+
+    char del[512]; // набор разделителей
+    int len_del; //кол-во разделителей
 public:
     tokenaizer(char* a, int len);
-
+    ~tokenaizer();
+    char* initialize(char* filename);
+    char* spl(tokenaizer a);
     friend ostream& operator << (ostream&, const tokenaizer&);
 };
 
