@@ -2,53 +2,33 @@
 
 int main() {
 
-    /*char s[] = "Hello, Wor,l,d!";
-    char *str = strtok(s, ",");
-    cout << "\n" << str << "\n";
-    str = strtok(NULL, ",");
-    cout << str << "\n";
-    str = strtok(NULL, ",");
-    cout << str << "\n";
-    str = strtok(NULL, ",");
-    cout << str << "\n";*/
+    char string1[] = "Hello, world! My name is Philip.";
+    char string2[] = "aaaaaaaaaaaaaaaaaaaaaa";
 
-    char str1[] = "Hello, World!"; // cout << strlen(str1) << endl; cout << str1[12] << endl;
+    char name[] = "delim.txt";
 
-    //char str2[3]; str2[0] = 1; str2[1] = 2; cout << str2[2] << endl;
+    tokenaizer x(string1, (int)strlen(string1));
+    x.initialize(name); return 0;
+    x.spl(); x.spl();
+    x.numbtoc(); return 0;
+    x.iterator(0); x.iterator(3); x.iterator(100);
+    x.get_token(1); x.get_token(100);
 
-    tokenaizer obj(str1, strlen(str1)+1);
-    //cout << obj;
+    x.change_del(string2, 0);
+    return 0;
 
-    /*string path = "delim.txt";
+    tokenaizer y(string2, (int)strlen(string2));
+    y.initialize(name);
+    y.spl();
 
-    ifstream fin;
-    fin.open(path);
-
-    if (!fin.is_open()) {
-        cout << "error: could not open the file" << endl;
-    } else {
-        cout << "file is open" << endl;
-        char ch;
-        while (fin.get(ch[i]))
-            cout << ch;
-    }
-
-    fin.close();*/
-
-
-
-    /*char str[] = "Hello world!";
-    cout << str << endl;
-    for (size_t i = 0; i < strlen(str); ++i)
-        cout << str[i];
-    cout << "\n";
-    vector <string> v(2);
-    v[0] = "Hello"; v[1] = " "; v.push_back("world"); v.push_back("!");
-    //int i = size.v();
-    //for (size_t i = 0; i < size.v( ); ++i)
-        //cout << v[i] << endl;*/
-    //char path[] = "delim.txt";
-    //char* razd = obj.initialize(path);
+    char string3[] = "   ";
+    tokenaizer z(string3, (int)strlen(string3));
+    z.initialize(name);
+    z.spl();
+    cout << "before 28" << endl;
+    z.get_token(2);
+    cout << "after 28" << endl;
+    z.numbtoc();
 
     return 0;
 }
