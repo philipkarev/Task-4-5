@@ -4,8 +4,8 @@ tokenaizer::tokenaizer(char *a, int len) {
 
     //cout << "Called constructor" << endl;
 
-    if (len <= 0) {
-        cout << "Error: invalid value of len" << endl;
+    if (len <= 1) {
+        cout << "[tokenaizer]Error: invalid value of len" << endl;
     } else {
         len_s = len;
 
@@ -24,8 +24,8 @@ tokenaizer::~tokenaizer() {
 
     //cout << "Called destructor" << endl;
 
-    if (len_s <= 0) {
-        cout << "Error: invalid value of len" << endl;
+    if (len_s <= 1) {
+        cout << "[~tokenaizer]Error: invalid value of len" << endl;
     } else {
 
         delete[] s;
@@ -60,7 +60,8 @@ void tokenaizer::initialize(char* filename) {
             del[i] = ch;
             ++i;
         }
-        del[i+1] = '\0';
+        del[i//+1]
+        ] = '\0';
         len_del = i;
         if (len_del <= 1) {
             cout << "[initialize]File with separators is empty." << endl;
@@ -69,7 +70,6 @@ void tokenaizer::initialize(char* filename) {
     }
 
     fin.close();
-    exit(1);
 }
 
 int tokenaizer::spl() {
@@ -87,14 +87,14 @@ int tokenaizer::spl() {
     ++c_spl;
 
     if (len_s == 0){
-        cout << "error" << endl;
+        cout << "[spl]Error" << endl;
         return -1;
     }
     char* pch = strtok (s, del);
 
     int k = 0;
 
-    list <int> :: iterator  it = len.begin();
+//    list <int> :: iterator  it = len.begin();
 
     cout << "\n-------------\nPrint tokens:\n";
 
@@ -106,10 +106,12 @@ int tokenaizer::spl() {
         }
         cout << "\n";
 
-        v.push_back((int)j);
+//        v.push_back((int)j);
 
-        len.insert(it, (int)j);
-        it++;
+//        len.insert(it, (int)j);
+//        it++;
+
+        lst.push_back((int)j);
 
         pch = strtok (NULL, del);
         ++k;
@@ -158,7 +160,7 @@ int tokenaizer::iterator(int n) {
     cout << "The iterator called. You can view tokens starting from " << n << endl;
 
     for (int i = n; i < num_toc; ++i) {
-        for (int j = 0; j < v[i]; ++j)
+        for (int j = 0; j < lst[i]; ++j)
             cout << ss[i][j];
         cout << endl;
     }
@@ -189,14 +191,14 @@ char* tokenaizer::get_token(int n){
     if (c_t > 0) // проверяем, вызывался ли уже этот метод
         delete [] t; // если да, очистим память
 
-    t = new char[v[n]]; // выделяем память под t
+    t = new char[lst[n]]; // выделяем память под t
 
-    for (int i = 0; i < v[n]; ++i) // заполняем t
+    for (int i = 0; i < lst[n]; ++i) // заполняем t
         t[i] = ss[n][i];
 
     c_t++;
 
-    for (int i = 0; i < v[n]; ++i) // выводим, чем заполнили t
+    for (int i = 0; i < lst[n]; ++i) // выводим, чем заполнили t
         cout << t[i];
 
     cout << "\n-----------------------\n";
@@ -225,13 +227,6 @@ int tokenaizer::change_del(char* st, int l){
     return 0;
 }
 
-/*int split(char* st, char* d, int lS, int lD){
-    for (int i = 0; i < lS; ++i) {
-        for (int j = 0; j < lD; ++j) {
-            if (d[j] == st[i]){
-                continue;
-            }
 
-        }
-    }
-}*/
+
+
